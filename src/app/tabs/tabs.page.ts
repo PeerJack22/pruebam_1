@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SupabaseService } from '../services/supabase.service';
 
 @Component({
   selector: 'app-tabs',
@@ -8,6 +10,11 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private router: Router, private supabaseService: SupabaseService) {}
+
+  async logout() {
+    await this.supabaseService.logout();
+    this.router.navigateByUrl('/login');
+  }
 
 }
