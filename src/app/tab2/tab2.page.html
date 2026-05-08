@@ -7,11 +7,69 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+    <div class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Búsqueda</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Buscar en Open Library</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="stacked">Tipo de búsqueda</ion-label>
+            <ion-select [(ngModel)]="searchField">
+              <ion-select-option *ngFor="let field of searchFields" [value]="field.value">
+                {{ field.label }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Término</ion-label>
+            <ion-input
+              [(ngModel)]="query"
+              placeholder="Escribe título, autor, ISBN o año"
+              (keyup.enter)="searchBooks()">
+            </ion-input>
+          </ion-item>
+
+          <ion-button expand="block" class="ion-margin-top" (click)="searchBooks()">
+            Buscar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-text color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+
+      <ion-card *ngIf="isLoading">
+        <ion-card-content>
+          <ion-spinner name="crescent"></ion-spinner>
+          <p>Cargando resultados...</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="results.length > 0">
+        <ion-card-header>
+          <ion-card-title>Resultados</ion-card-title>
+        </ion-card-header>
+        <ion-list>
+          <ion-item button detail *ngFor="let result of results" (click)="openDetail(result)">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="getCoverUrl(result.cover_i)"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ result.title }}</h2>
+              <p *ngIf="result.author_name?.length">{{ result.author_name?.join(', ') }}</p>
+              <p *ngIf="result.first_publish_year">Año: {{ result.first_publish_year }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </div>
 </ion-content>

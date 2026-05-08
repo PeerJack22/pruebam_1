@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () =>
-      import('./tabs/tabs.module').then(m => m.TabsPageModule)
+      import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard] // Para poder acceder a las tabs, el usuario debe estar autenticado
   }
 ];

@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Detalle
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +14,31 @@
     </ion-toolbar>
   </ion-header>
 
-  
+  <div class="ion-padding">
+    <ion-card *ngIf="isLoading">
+      <ion-card-content>
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando detalle...</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-text color="danger" *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </ion-text>
+
+    <ion-card *ngIf="detail">
+      <ion-img *ngIf="detail.covers?.length" [src]="getCoverUrl()"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ detail.title }}</ion-card-title>
+        <ion-card-subtitle>{{ workKey }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="getDescription()">{{ getDescription() }}</p>
+
+        <p *ngIf="detail.subjects?.length"><strong>Temas:</strong> {{ detail.subjects?.join(', ') }}</p>
+        <p *ngIf="detail.created?.value"><strong>Creado:</strong> {{ detail.created?.value }}</p>
+        <p *ngIf="detail.last_modified?.value"><strong>Última modificación:</strong> {{ detail.last_modified?.value }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
