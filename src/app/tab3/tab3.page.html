@@ -14,30 +14,92 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-padding">
-    <ion-card *ngIf="isLoading">
+  <div class="detail-page ion-padding">
+    <ion-card class="state-card" *ngIf="isLoading">
       <ion-card-content>
         <ion-spinner name="crescent"></ion-spinner>
         <p>Cargando detalle...</p>
       </ion-card-content>
     </ion-card>
 
-    <ion-text color="danger" *ngIf="errorMessage">
-      <p>{{ errorMessage }}</p>
-    </ion-text>
+    <ion-card class="state-card error-card" *ngIf="errorMessage">
+      <ion-card-content>
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <p>{{ errorMessage }}</p>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-card *ngIf="detail">
-      <ion-img *ngIf="detail.covers?.length" [src]="getCoverUrl()"></ion-img>
+    <ion-card class="book-card" *ngIf="detail">
+      <ion-grid>
+        <ion-row class="book-card__row">
+          <ion-col size="12" size-md="5" class="book-card__cover-col">
+            <div class="cover-frame">
+              <ion-img *ngIf="detail.covers?.length" [src]="getCoverUrl()"></ion-img>
+              <div class="cover-placeholder" *ngIf="!detail.covers?.length">
+                <ion-icon name="book-outline"></ion-icon>
+                <p>Sin portada disponible</p>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" size-md="7" class="book-card__content-col">
+            <div class="book-meta">
+              <span class="eyebrow">Open Library</span>
+              <h1>{{ detail.title }}</h1>
+              <p class="work-key">{{ workKey }}</p>
+            </div>
+
+            <div class="chip-row" *ngIf="detail.subjects?.length">
+              <ion-chip *ngFor="let subject of detail.subjects | slice:0:6">
+                <ion-label>{{ subject }}</ion-label>
+              </ion-chip>
+            </div>
+
+            <div class="summary-box" *ngIf="getDescription()">
+              <h2>Descripción</h2>
+              <p>{{ getDescription() }}</p>
+            </div>
+
+            <div class="action-row">
+              <ion-button fill="solid" color="primary" (click)="goBack()">
+                <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+                Volver a búsqueda
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="info-card" *ngIf="detail">
       <ion-card-header>
-        <ion-card-title>{{ detail.title }}</ion-card-title>
-        <ion-card-subtitle>{{ workKey }}</ion-card-subtitle>
+        <ion-card-title>Detalles adicionales</ion-card-title>
+        <ion-card-subtitle>Información complementaria del libro</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <p *ngIf="getDescription()">{{ getDescription() }}</p>
-
-        <p *ngIf="detail.subjects?.length"><strong>Temas:</strong> {{ detail.subjects?.join(', ') }}</p>
-        <p *ngIf="detail.created?.value"><strong>Creado:</strong> {{ detail.created?.value }}</p>
-        <p *ngIf="detail.last_modified?.value"><strong>Última modificación:</strong> {{ detail.last_modified?.value }}</p>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="bookmark-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Temas</h2>
+              <p>{{ detail.subjects?.length ? detail.subjects?.join(', ') : 'No disponible' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Creado</h2>
+              <p>{{ detail.created?.value || 'No disponible' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="refresh-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Última actualización</h2>
+              <p>{{ detail.last_modified?.value || 'No disponible' }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-card-content>
     </ion-card>
   </div>

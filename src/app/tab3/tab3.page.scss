@@ -1,0 +1,159 @@
+
+:host {
+	display: block;
+}
+
+.detail-page {
+	display: grid;
+	gap: 18px;
+}
+
+.state-card {
+	text-align: center;
+
+	ion-card-content {
+		display: grid;
+		gap: 10px;
+		justify-items: center;
+		padding: 26px;
+	}
+
+	ion-icon {
+		font-size: 2rem;
+		color: var(--ion-color-primary);
+	}
+}
+
+.error-card {
+	ion-card-content {
+		color: var(--ion-color-danger);
+	}
+}
+
+.book-card,
+.info-card {
+	overflow: hidden;
+}
+
+.book-card__row {
+	align-items: stretch;
+}
+
+.book-card__cover-col,
+.book-card__content-col {
+	display: flex;
+}
+
+.cover-frame {
+	width: 100%;
+	min-height: 320px;
+	border-radius: 24px;
+	overflow: hidden;
+	background: linear-gradient(180deg, #f4e6d3 0%, #e8d1b5 100%);
+	box-shadow: inset 0 0 0 1px rgba(122, 78, 45, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cover-frame ion-img {
+	width: 100%;
+	height: 100%;
+	min-height: 320px;
+	object-fit: cover;
+}
+
+.cover-placeholder {
+	display: grid;
+	gap: 10px;
+	justify-items: center;
+	text-align: center;
+	color: #6d4c34;
+	padding: 24px;
+
+	ion-icon {
+		font-size: 4rem;
+	}
+}
+
+.book-card__content-col {
+	flex-direction: column;
+	justify-content: center;
+	gap: 18px;
+	padding: 6px 4px;
+}
+
+.book-meta {
+	display: grid;
+	gap: 6px;
+
+	.eyebrow {
+		font-size: 0.78rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--ion-color-secondary);
+		font-weight: 700;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(1.7rem, 4vw, 2.6rem);
+		line-height: 1.1;
+		color: #3a2418;
+	}
+
+	.work-key {
+		margin: 0;
+		color: #86664a;
+		font-size: 0.95rem;
+		word-break: break-word;
+	}
+}
+
+.chip-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.summary-box {
+	display: grid;
+	gap: 10px;
+	padding: 16px 18px;
+	border-radius: 18px;
+	background: rgba(182, 141, 88, 0.1);
+	border: 1px solid rgba(122, 78, 45, 0.1);
+
+	h2 {
+		margin: 0;
+		font-size: 1rem;
+		color: #5a3720;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.65;
+		color: #4a3325;
+	}
+}
+
+.action-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.info-card ion-list {
+	background: transparent;
+}
+
+@media (max-width: 767px) {
+	.cover-frame,
+	.cover-frame ion-img {
+		min-height: 280px;
+	}
+
+	.book-card__content-col {
+		padding-top: 18px;
+	}
+}

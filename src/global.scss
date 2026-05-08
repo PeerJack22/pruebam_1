@@ -35,3 +35,84 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+:root {
+	color-scheme: light;
+}
+
+html,
+body,
+ion-app {
+	min-height: 100%;
+	background:
+		radial-gradient(circle at top left, rgba(122, 78, 45, 0.14), transparent 30%),
+		radial-gradient(circle at bottom right, rgba(182, 141, 88, 0.14), transparent 28%),
+		linear-gradient(180deg, #f9f2e8 0%, #f5ede1 50%, #efe2cf 100%);
+	color: #3a2418;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+}
+
+ion-content {
+	--background: transparent;
+}
+
+ion-header ion-toolbar,
+ion-footer ion-toolbar {
+	--background: rgba(241, 227, 207, 0.95);
+	--color: #3a2418;
+	--border-color: rgba(122, 78, 45, 0.14);
+	backdrop-filter: blur(10px);
+}
+
+ion-card {
+	--background: rgba(255, 249, 241, 0.94);
+	border: 1px solid rgba(122, 78, 45, 0.12);
+	border-radius: 22px;
+	box-shadow: 0 18px 40px rgba(90, 58, 33, 0.12);
+}
+
+ion-card-title,
+ion-title,
+ion-label h2,
+ion-label h3,
+ion-label p {
+	color: #3a2418;
+}
+
+ion-item {
+	--background: transparent;
+	--color: #3a2418;
+	--border-color: rgba(122, 78, 45, 0.12);
+}
+
+ion-button {
+	--border-radius: 16px;
+	--box-shadow: 0 10px 22px rgba(122, 78, 45, 0.18);
+}
+
+ion-chip {
+	--background: rgba(182, 141, 88, 0.16);
+	--color: #5a3720;
+}
+
+ion-tab-bar {
+	border-top: 1px solid rgba(122, 78, 45, 0.12);
+	backdrop-filter: blur(14px);
+}
+
+ion-fab-button {
+	--background: #7a4e2d;
+	--background-activated: #6b4427;
+	--background-hover: #8a6141;
+	--box-shadow: 0 18px 30px rgba(90, 58, 33, 0.25);
+}
+
+@media (max-width: 576px) {
+	ion-card {
+		border-radius: 18px;
+	}
+
+	ion-toolbar {
+		--min-height: 56px;
+	}
+}

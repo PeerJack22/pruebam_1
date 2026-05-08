@@ -12,4 +12,104 @@
       <ion-title size="large">Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="ion-padding">
+    <ion-card *ngIf="isLoading">
+      <ion-card-content>
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando perfil...</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isLoading">
+      <ion-card-content class="ion-text-center">
+        <ion-avatar style="width: 96px; height: 96px; margin: 0 auto 12px;">
+          <ion-icon name="person-circle" style="font-size: 96px; width: 96px; height: 96px;"></ion-icon>
+        </ion-avatar>
+        <h2 style="margin: 0; font-size: 1.4rem; font-weight: 700;">{{ displayName }}</h2>
+        <p style="margin-top: 6px; color: var(--ion-color-medium);">{{ accountStatus }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isLoading">
+      <ion-card-header>
+        <ion-card-title>Información personal</ion-card-title>
+        <ion-card-subtitle>Datos de contacto y perfil</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="full">
+          <ion-label>
+            <h2>Correo</h2>
+            <p>{{ userEmail || 'No hay correo disponible' }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label>
+            <h2>GitHub</h2>
+            <p>{{ github }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>
+            <h2>Teléfono</h2>
+            <p>{{ phone }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isLoading">
+      <ion-card-header>
+        <ion-card-title>Información de la cuenta</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Estado</h2>
+              <p>{{ accountStatus }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="library-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Aplicación</h2>
+              <p>Open Library App</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Sección</h2>
+              <p>Perfil de usuario</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isLoading">
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="location-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Ubicación</h2>
+              <p>{{ location }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="heart-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h2>Preferencias</h2>
+              <p>Lectura, libros y tecnología</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

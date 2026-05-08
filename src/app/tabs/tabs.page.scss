@@ -1,1 +1,26 @@
 
+:host {
+	display: block;
+}
+
+ion-header {
+	box-shadow: 0 10px 24px rgba(90, 58, 33, 0.08);
+}
+
+ion-toolbar {
+	--min-height: 62px;
+}
+
+ion-button {
+	font-weight: 600;
+}
+
+ion-tab-bar {
+	padding: 6px 8px calc(env(safe-area-inset-bottom, 0px) + 6px);
+}
+
+ion-tab-button {
+	--color: #7a4e2d;
+	--color-selected: #3a2418;
+}
+
