@@ -17,6 +17,16 @@ Open Library Api
 - Splash Screen
 
 ## Instrucciones	de	instalación:
+
+Para poder instalar se abre el apk y se instala dando los permisos necesarios
+
 ## Instrucciones	de	ejecución:
+
+Para poder ejecutar solo se da clic en el ícono y la aplicación se abre
+
+Usuario : paulo.cisneros@epn.edu.ec
+
+Contraseña: PeerJack22
+
 ## Capturas:
 
