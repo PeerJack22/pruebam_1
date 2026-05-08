@@ -40,8 +40,6 @@ Contraseña: PeerJack22
 
 <img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/7b68b238-203d-450c-a945-6bd6a1b59944" />
 
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/7afd4820-9cff-439b-b381-0d501cbb06e3" />
-
 <img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/e5c0d859-0759-4275-8ac8-576d224be7a4" />
 
 <img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/cb042eb6-7d5b-4139-a9fa-ae66f30e7f15" />
